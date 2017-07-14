@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Songbook</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=0">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Songbook</h1>
+      </header>
+      <nav>
+        <% if current_user %>
+          <%= link_to "Songs", songs_url %>
+          <%= link_to "Setlists", setlists_url %>
+          <%= link_to "Practice Songs", practice_url %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path %>
+          <%= link_to "Log in", new_user_session_path %>
+        <% end %>
+      </nav>
+      <main>
+        <p id="notice"><%= notice %></p>
+        <%= yield %>
+      </main>
+      <footer>
+        <small>Songbook app copyright <%= Date.today.year %> Brian P. Hogan. Songs and lyrics within Songbook are the property of the songwriters.</small>
+      </footer>
+    </div>
+  </body>
+</html>

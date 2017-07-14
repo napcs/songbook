@@ -1,0 +1,16 @@
+<h1>Setlists</h1>
+
+<table>
+  <% @setlists.each do |setlist| %>
+    <tr>
+      <td><%= link_to setlist.name, setlist %></td>
+      <td><%= link_to 'Practice', practice_setlist_path(setlist) %></td>
+      <td><%= link_to 'Edit', edit_setlist_path(setlist) %></td>
+      <td><%= link_to 'Delete', setlist, method: :delete, data: { confirm: 'Are you sure you want to delete this setlist?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<%= link_to 'Add Setlist', new_setlist_path %>

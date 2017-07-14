@@ -1,0 +1,56 @@
+<div id="song">
+  <header>
+    <h2><%= @song.name %> </h2>
+  </header>
+  <section id="controls">
+    <input id="speedSlider" type="range" min="0" max="20" value="4">
+  </section>
+  <section id="lyrics">
+    <% @song.lyrics.split("\n").each do |line| %>
+      <div class="line">
+        <% if line.blank? %>
+          &nbsp;
+        <% else %>
+          <%= line %>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+
+</div>
+
+<script>
+
+var scrolling = false;
+var lyricsDiv = document.getElementById("lyrics");
+var speedSlider = document.getElementById("speedSlider");
+var speed = Number(speedSlider.value);
+
+speedSlider.addEventListener('change', function(e) {
+  speed = Number(speedSlider.value);
+});
+
+function scroll(id, currentPosition) {
+  if (scrolling) {
+    var div = document.getElementById(id);
+    currentPosition = currentPosition + speed;
+
+    div.scrollTop = currentPosition;
+    if (div.scrollHeight - div.scrollTop > div.clientHeight) {
+      var timer = setTimeout("scroll('" + id + "', " + currentPosition + ")",100);
+    } else {
+      scrolling = false;
+    }
+  }
+}
+
+
+// Toggle scrolling on and off
+lyricsDiv.addEventListener('click', function(e){
+
+  e.preventDefault();
+  scrolling = !scrolling;
+  scroll("lyrics", lyricsDiv.scrollTop )
+});
+
+</script>

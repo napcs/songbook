@@ -1,0 +1,13 @@
+<header>
+  <h2>
+    <%= @setlist.name %>
+    <%= link_to 'Edit', edit_setlist_path(@setlist) %> |
+    <%= link_to 'Back', setlists_path %>
+  </h2>
+</header>
+
+<section id="songs">
+  <% @setlist.songs.each do |song| %>
+    <div><%= link_to song.name, song %></div>
+  <% end %>
+</section>

@@ -1,0 +1,23 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home {
+
+
+  section {
+    flex: 1;
+    display: flex;
+
+    div {
+      flex: 1;
+    }
+  }
+
+  img {
+    border: 1px solid #ddd;
+    width: 50%;
+    height: auto;
+  }
+
+}

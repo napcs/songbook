@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, .wrapper {
+  height: 100%;
+}
+
+main {
+  height: 85%;
+
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2 {
+  margin: 0 0 10px 0;
+}
+
+
+@media (min-width: 760px) {
+
+  .wrapper {
+    width: 80%;
+    display: block;
+  }
+
+  nav {
+    a {
+      display: inline-block;
+      padding-right: 1em;
+    }
+
+  }
+
+}
+@media (min-width: 1400px) {
+
+  .wrapper {
+    width: 50%;
+  }
+
+}

@@ -1,0 +1,35 @@
+<%= form_with(model: setlist, local: true) do |form| %>
+  <% if setlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(setlist.errors.count, "error") %> prohibited this setlist from being saved:</h2>
+
+      <ul>
+      <% setlist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :setlist_name %>
+  </div>
+
+  <div class="field">
+    <p>Select songs for this setlist:</p>
+    <%= hidden_field_tag "setlist[song_ids][]", nil %>
+
+    <% current_user.songs.all.each do |song| %>
+      <label>
+        <%= check_box_tag "setlist[song_ids][]", song.id, @setlist.song_ids.include?(song.id), :id => dom_id(song)  %>
+        <%= song.name %>
+      </label>
+      <br>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
