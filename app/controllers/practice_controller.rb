@@ -1,4 +1,8 @@
 class PracticeController < ApplicationController
+  before_action :authenticate_user!
+
+  before_action :has_songs, only: [:index, :show]
+
   def index
     create_practice_list current_user.songs
     session[:setlist_id] = nil
@@ -19,12 +23,7 @@ class PracticeController < ApplicationController
         redirect_to practice_url
       end
     else
-
-      begin
-        @song = current_user.songs.find practice_list_next
-      rescue
-        redirect_to songs_url, notice: "You need some songs first."
-      end
+      @song = current_user.songs.find practice_list_next
     end
   end
 
@@ -44,5 +43,9 @@ class PracticeController < ApplicationController
 
   def practice_list_next
     session[:practice_list].pop
+  end
+
+  def has_songs
+    redirect_to songs_url, notice: "You need some songs first." if current_user.songs.empty?
   end
 end

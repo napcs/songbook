@@ -21,13 +21,22 @@ class PracticeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should redirect to songs if they don't have any songs" do
+  test "should redirect to songs if they don't have any songs and try to to to a song url" do
     user = users(:homer)
     sign_in user
     user.songs.delete_all
     get practice_song_url
     assert_response :redirect
+    assert_redirected_to songs_url
+  end
 
+  test "should redirect to songs if they don't have any songs and go to practice" do
+    user = users(:homer)
+    sign_in user
+    user.songs.delete_all
+    get practice_url
+    assert_response :redirect
+    assert_redirected_to songs_url
   end
 
 end

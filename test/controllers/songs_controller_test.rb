@@ -24,7 +24,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
       post songs_url, params: { song: { lyrics: @song.lyrics, name: @song.name, user_id: @song.user_id } }
     end
 
-    assert_redirected_to song_url(Song.last)
+    assert_redirected_to songs_url
   end
 
   test "should show song" do
@@ -42,7 +42,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
   test "should update song" do
     sign_in users(:homer)
     patch song_url(@song), params: { song: { lyrics: @song.lyrics, name: @song.name, user_id: @song.user_id } }
-    assert_redirected_to song_url(@song)
+    assert_redirected_to songs_url
   end
 
   test "should destroy song" do
