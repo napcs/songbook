@@ -1,7 +1,10 @@
+#songs_show {
+  footer {display: none}
+}
 #song {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 90vh;
 }
 
 #song > header {flex: 0 }

@@ -2,21 +2,26 @@
   box-sizing: border-box;
 }
 
-html, body, .wrapper {
-  height: 100%;
+body {
+  margin:0;
+  padding:0;
 }
 
-main {
-  height: 85%;
-
+html, body, .wrapper {
+  height: 100%;
 }
 
 .wrapper {
   margin: 0 auto;
 }
 
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+header, footer, main, nav {
+  margin: 0 0.25em;
 }
 
 h1, h2 {
@@ -24,10 +29,20 @@ h1, h2 {
 }
 
 
+h1, h2, p {
+  font-size: 16px;
+}
+
+.wrapper {
+  position: relative;
+}
+
 @media (min-width: 760px) {
 
+  h1 {font-size: 24px }
+
   .wrapper {
-    width: 80%;
+    width: 90%;
     display: block;
   }
 

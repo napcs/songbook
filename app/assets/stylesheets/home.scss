@@ -3,21 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .home {
-
-
-  section {
-    flex: 1;
-    display: flex;
-
-    div {
-      flex: 1;
-    }
+  .wrapper {
+    width: 90%;
+    margin: 0 auto;
   }
 
   img {
     border: 1px solid #ddd;
-    width: 50%;
+    width: 100%;
     height: auto;
+  }
+
+
+  @media (min-width: 760px) {
+    section {
+      flex: 1;
+      display: flex;
+
+      div {
+        flex: 1;
+      }
+    }
+
+    img {
+      width: 50%;
+    }
   }
 
 }

@@ -5,24 +5,27 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=0">
   </head>
 
-  <body>
+  <body id="<%= params[:controller] %>_<%= params[:action]%>">
     <div class="wrapper">
       <header>
         <h1>Songbook</h1>
       </header>
       <nav>
+        <a id="navtoggle">Menu</a>
+        <ul id="navElements">
         <% if current_user %>
-          <%= link_to "Songs", songs_url %>
-          <%= link_to "Setlists", setlists_url %>
-          <%= link_to "Practice Songs", practice_url %>
+          <li><%= link_to "Songs", songs_url %></li>
+          <li><%= link_to "Setlists", setlists_url %></li>
+          <li><%= link_to "Practice Songs", practice_url %></li>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path %>
-          <%= link_to "Log in", new_user_session_path %>
+
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Log in", new_user_session_path %></li>
         <% end %>
+        </ul>
       </nav>
       <main>
         <p id="notice"><%= notice %></p>
@@ -32,5 +35,6 @@
         <small>Songbook app copyright <%= Date.today.year %> Brian P. Hogan. Songs and lyrics within Songbook are the property of the songwriters.</small>
       </footer>
     </div>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
