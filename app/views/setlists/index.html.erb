@@ -1,15 +1,19 @@
 <h1>Setlists</h1>
 
-<table>
-  <% @setlists.each do |setlist| %>
-    <tr>
-      <td><%= link_to setlist.name, setlist %></td>
-      <td><%= link_to 'Practice', practice_setlist_path(setlist) %></td>
-      <td><%= link_to 'Edit', edit_setlist_path(setlist) %></td>
-      <td><%= link_to 'Delete', setlist, method: :delete, data: { confirm: 'Are you sure you want to delete this setlist?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<% if @setlists.any? %>
+  <table>
+    <% @setlists.each do |setlist| %>
+      <tr>
+        <td><%= link_to setlist.name, setlist %></td>
+        <td><%= link_to 'Practice', practice_setlist_path(setlist) %></td>
+        <td><%= link_to 'Edit', edit_setlist_path(setlist) %></td>
+        <td><%= link_to 'Delete', setlist, method: :delete, data: { confirm: 'Are you sure you want to delete this setlist?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>You don't have any setlists yet. You should add one.</p>
+<% end %>
 
 <hr>
 

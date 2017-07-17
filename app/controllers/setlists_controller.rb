@@ -5,7 +5,7 @@ class SetlistsController < ApplicationController
   # GET /setlists
   # GET /setlists.json
   def index
-    @setlists = Setlist.all
+    @setlists = current_user.setlists.all
   end
 
   # GET /setlists/1
